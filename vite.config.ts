@@ -1,8 +1,8 @@
+import { loadEnvFile } from 'node:process'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import { defineConfig } from 'vite'
 import tsConfigPaths from 'vite-tsconfig-paths'
 import viteReact from '@vitejs/plugin-react'
-import { loadEnvFile } from 'process'
 
 export default defineConfig(({ mode }) => {
   if (mode === 'development') {
