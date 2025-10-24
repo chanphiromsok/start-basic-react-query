@@ -9,4 +9,4 @@ msgstr ""
 
 #: src/routes/index.tsx:11
 msgid "Welcome Home!!!"
-msgstr ""
+msgstr "សូមស្វាគមន៍"

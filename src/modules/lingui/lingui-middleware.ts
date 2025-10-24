@@ -7,11 +7,8 @@ import { dynamicActivate } from "./i18n"
 export const linguiMiddleware = createMiddleware({ type: "request" }).server(
   async ({ next }) => {
     const locale = getLocaleFromRequest()
-
     const i18n = setupI18n({})
-
-    await dynamicActivate(i18n, locale)
-
+    await dynamicActivate(locale)
     return next({
       context: { i18n },
     })

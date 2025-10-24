@@ -6,11 +6,9 @@ import { routeTree } from './routeTree.gen'
 import { DefaultCatchBoundary } from './components/DefaultCatchBoundary'
 import { NotFound } from './components/NotFound'
 import { routerWithLingui } from './modules/lingui/router-plugin'
-import { dynamicActivate } from './modules/lingui/i18n'
 
 export function getRouter() {
   const queryClient = new QueryClient()
-  dynamicActivate(i18n, 'en')
   const router = routerWithLingui(
     createReactRouter({
       routeTree,
