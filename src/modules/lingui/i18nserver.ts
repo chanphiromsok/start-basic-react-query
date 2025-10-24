@@ -1,10 +1,11 @@
+import { createIsomorphicFn, createServerFn } from '@tanstack/react-start'
 import {
   getRequest,
   getRequestHeaders,
   setResponseHeader,
 } from '@tanstack/react-start/server'
 import { parse, serialize } from 'cookie-es'
-import { defaultLocale, isLocaleValid } from './i18n'
+import { defaultLocale, dynamicActivate, isLocaleValid } from './i18n'
 
 export function getLocaleFromRequest() {
   const request = getRequest()
@@ -38,3 +39,26 @@ export function getLocaleFromRequest() {
   )
   return defaultLocale
 }
+
+export const updateLocale = createServerFn({ method: 'POST' })
+  .inputValidator((locale: string) => locale)
+  .handler(({ data }) => {
+    setResponseHeader(
+      'Set-Cookie',
+      serialize('locale', data, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: '/',
+      }),
+    )
+  });
+
+export const changeLocaleIsomorphic = createIsomorphicFn().server((locale: string) => {
+  setResponseHeader(
+    'Set-Cookie',
+    serialize('locale', locale, {
+      maxAge: 30 * 24 * 60 * 60,
+    }),
+  )
+}).client((locale: string) => {
+  dynamicActivate(locale);
+})
