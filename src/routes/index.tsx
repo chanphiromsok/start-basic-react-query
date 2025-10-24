@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/react/macro';
 import { createFileRoute } from '@tanstack/react-router';
 import { changeLocaleIsomorphic } from '@/lib/lingui';
+import { BottomSheetExample } from '@/components/BottomSheetExample';
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -20,6 +21,7 @@ function Home() {
       }}>
         EN
       </button>
+      <BottomSheetExample />
     </div>
   )
 }
