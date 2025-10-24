@@ -3,6 +3,7 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import { defineConfig } from 'vite'
 import tsConfigPaths from 'vite-tsconfig-paths'
 import viteReact from '@vitejs/plugin-react'
+import { lingui } from '@lingui/vite-plugin'
 
 export default defineConfig(({ mode }) => {
   if (mode === 'development') {
@@ -11,7 +12,7 @@ export default defineConfig(({ mode }) => {
     loadEnvFile('.env.production')
   }
 
-  console.log("MODE:", mode);
+  console.log('MODE:', mode)
   return {
     server: {
       port: 3000,
@@ -21,7 +22,12 @@ export default defineConfig(({ mode }) => {
         projects: ['./tsconfig.json'],
       }),
       tanstackStart(),
-      viteReact(),
+      viteReact({
+        babel: {
+          plugins: ['@lingui/babel-plugin-lingui-macro'],
+        },
+      }),
+      lingui(),
     ],
   }
 })
