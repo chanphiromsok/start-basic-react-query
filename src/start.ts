@@ -1,5 +1,6 @@
 import { createStart } from "@tanstack/react-start";
-import { linguiMiddleware } from "./modules/lingui/lingui-middleware";
+import { linguiMiddleware } from "./locales/lingui-middleware";
+
 
 export const startInstance = createStart(() => {
     return {

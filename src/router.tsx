@@ -5,7 +5,7 @@ import { i18n } from '@lingui/core'
 import { routeTree } from './routeTree.gen'
 import { DefaultCatchBoundary } from './components/DefaultCatchBoundary'
 import { NotFound } from './components/NotFound'
-import { routerWithLingui } from './modules/lingui/router-plugin'
+import { routerWithLingui } from './locales/router-plugin'
 
 export function getRouter() {
   const queryClient = new QueryClient()
