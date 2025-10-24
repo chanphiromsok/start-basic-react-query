@@ -1,5 +1,6 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
+import { Trans } from '@lingui/react/macro'
 import { postsQueryOptions } from '../utils/posts'
 
 export const Route = createFileRoute('/posts')({
@@ -17,6 +18,7 @@ function PostsComponent() {
 
   return (
     <div className="p-2 flex gap-2">
+      <Trans>Posts</Trans>
       <ul className="list-disc pl-4">
         {[
           ...postsQuery.data,
