@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
   console.log('MODE:', mode)
   return {
     server: {
-      port: 3000,
+      port: Number(process.env.PORT ?? 3000),
     },
     plugins: [
       tsConfigPaths({
