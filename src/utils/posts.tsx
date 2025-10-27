@@ -1,7 +1,7 @@
 import { queryOptions } from '@tanstack/react-query'
 import { notFound } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
-import axios from 'redaxios'
+import ky from 'ky'
 
 export type PostType = {
   id: string
@@ -12,9 +12,11 @@ export type PostType = {
 export const fetchPosts = createServerFn({ method: 'GET' }).handler(
   async () => {
     console.info('Fetching posts...')
-    return axios
+    const data = await ky
       .get<Array<PostType>>('https://jsonplaceholder.typicode.com/posts')
-      .then((r) => r.data.slice(0, 10))
+      .json()
+
+    return data.slice(0, 10)
   },
 )
 
@@ -28,9 +30,9 @@ export const fetchPost = createServerFn({ method: 'GET' })
   .inputValidator((d: string) => d)
   .handler(async ({ data }) => {
     console.info(`Fetching post with id ${data}...`)
-    const post = await axios
+    const post = await ky
       .get<PostType>(`https://jsonplaceholder.typicode.com/posts/${data}`)
-      .then((r) => r.data)
+      .then((r) => r.json())
       .catch((err) => {
         console.error(err)
         if (err.status === 404) {
