@@ -13,10 +13,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/routes/index.tsx:19
+msgid "<0>Welcome Home!!!</0>"
+msgstr ""
+
 #: src/routes/posts.route.tsx:21
-msgid "Posts"
-msgstr "សូមស្វាគមន៍"
+#~ msgid "Posts"
+#~ msgstr "សូមស្វាគមន៍"
 
 #: src/routes/index.tsx:12
-msgid "Welcome Home!!!"
-msgstr "សូមស្វាគមន៍"
+#~ msgid "Welcome Home!!!"
+#~ msgstr "សូមស្វាគមន៍"

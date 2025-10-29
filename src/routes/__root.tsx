@@ -8,15 +8,15 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import * as React from 'react'
+import kantumruyFont from '../styles/KantumruyPro-VariableFont_wght.ttf?url'
 import type { QueryClient } from '@tanstack/react-query'
 import type { I18n } from '@lingui/core'
 import appCss from '@/styles/app.css?url'
 import { DefaultCatchBoundary } from '@/components/DefaultCatchBoundary'
 import { NotFound } from '@/components/NotFound'
 
-
 export const Route = createRootRouteWithContext<{
-  queryClient: QueryClient;
+  queryClient: QueryClient
   i18n: I18n
 }>()({
   head: () => ({
@@ -27,10 +27,17 @@ export const Route = createRootRouteWithContext<{
       {
         name: 'viewport',
         content: 'width=device-width, initial-scale=1',
-      }
+      },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
+      {
+        rel: 'preload',
+        href: kantumruyFont,
+        as: 'font',
+        type: 'font/ttf',
+        crossOrigin: "anonymous"
+      },
       {
         rel: 'icon',
         type: 'image/png',
