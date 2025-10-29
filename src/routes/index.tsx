@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/react/macro';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useRouteContext } from '@tanstack/react-router';
 import { changeLocaleIsomorphic } from '@/lib/lingui';
 import { BottomSheetExample } from '@/components/BottomSheetExample';
 import { Header } from '@/components/Header';
@@ -9,6 +9,7 @@ export const Route = createFileRoute('/')({
 })
 
 function Home() {
+  const { i18n } = useRouteContext({from:"__root__"});
   return (
     <div className="p-2">
       <Header
@@ -17,12 +18,12 @@ function Home() {
       />
       <Trans>Welcome Home!!!</Trans>
       <button className="ml-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onClick={() => {
-        changeLocaleIsomorphic("km");
+        changeLocaleIsomorphic(i18n,"km");
       }}>
         KM
       </button>
       <button className="ml-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" onClick={() => {
-        changeLocaleIsomorphic("en");
+        changeLocaleIsomorphic(i18n,"en");
       }}>
         EN
       </button>
